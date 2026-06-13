@@ -1,77 +1,25 @@
-# Fraud Detection System using Machine Learning
+# Credit Card Fraud Detection System
 
-## Project Overview
+## Overview
 
-This project aims to detect fraudulent credit card transactions using Machine Learning techniques. Due to the highly imbalanced nature of fraud datasets, the project employs SMOTE (Synthetic Minority Oversampling Technique) to improve the model's ability to identify fraudulent transactions.
+This project uses Machine Learning to detect fraudulent credit card transactions. Due to the highly imbalanced nature of fraud datasets, SMOTE oversampling was applied to improve fraud detection performance.
 
-The system includes:
-
-* Data preprocessing and exploration
-* Class imbalance handling using SMOTE
-* Random Forest model training
-* Model evaluation using classification metrics and ROC-AUC
-* Model explainability using SHAP
-* Streamlit web application for fraud prediction
-
----
-
-## Problem Statement
-
-Detect fraudulent credit card transactions accurately while minimizing false negatives and false positives.
+The system includes model explainability, performance evaluation, and a Streamlit web application for real-time prediction.
 
 ---
 
 ## Dataset
 
-**Credit Card Fraud Detection Dataset**
+Credit Card Fraud Detection Dataset
 
-* Source: Kaggle
-* Total Transactions: 284,807
-* Fraudulent Transactions: 492
-* Legitimate Transactions: 284,315
+Source:
+https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 
-The dataset contains anonymized PCA-transformed features (V1–V28), along with:
+Dataset Size:
 
-* Time
-* Amount
-* Class (Target Variable)
-
-Target Variable:
-
-* 0 → Legitimate Transaction
-* 1 → Fraudulent Transaction
-
----
-
-## Project Structure
-
-Fraud-Detection-System/
-
-├── data/
-
-│ ├── raw/
-
-│ └── processed/
-
-├── models/
-
-│ └── random_forest_model.pkl
-
-├── notebooks/
-
-├── src/
-
-│ └── predict.py
-
-├── app/
-
-│ └── app.py
-
-├── requirements.txt
-
-├── README.md
-
-└── .gitignore
+* 284,807 transactions
+* 492 fraudulent transactions
+* 30 anonymized PCA-transformed features
 
 ---
 
@@ -80,100 +28,97 @@ Fraud-Detection-System/
 * Python
 * Pandas
 * NumPy
-* Scikit-learn
-* Imbalanced-learn (SMOTE)
+* Scikit-Learn
+* XGBoost
 * SHAP
-* Matplotlib
 * Streamlit
-* Joblib
+* Matplotlib
+* Seaborn
 
 ---
 
 ## Machine Learning Pipeline
 
-### Data Preprocessing
-
-* Loaded and explored transaction data
-* Checked for missing values
-* Analyzed class imbalance
-
-### Train-Test Split
-
-* 80% Training Data
-* 20% Testing Data
-
-### Class Imbalance Handling
-
-SMOTE was applied to the training dataset to balance fraudulent and non-fraudulent transactions.
-
-### Model Training
-
-Random Forest Classifier
-
-Parameters:
-
-* n_estimators = 200
-* random_state = 42
-* n_jobs = -1
+1. Data Loading
+2. Exploratory Data Analysis
+3. Train-Test Split
+4. SMOTE Oversampling
+5. Random Forest Training
+6. XGBoost Training
+7. Model Evaluation
+8. Feature Importance Analysis
+9. Model Deployment with Streamlit
 
 ---
 
-## Model Performance
+## Best Model: XGBoost
 
-| Metric    | Value  |
+### Performance Metrics
+
+| Metric    | Score  |
 | --------- | ------ |
 | Precision | 0.79   |
 | Recall    | 0.85   |
-| F1-Score  | 0.82   |
+| F1 Score  | 0.82   |
 | ROC-AUC   | 0.9831 |
-
-Confusion Matrix:
-
-|                   | Predicted Legitimate | Predicted Fraud |
-| ----------------- | -------------------- | --------------- |
-| Actual Legitimate | 56809                | 55              |
-| Actual Fraud      | 13                   | 85              |
 
 ---
 
-## Model Explainability (SHAP)
-
-Top Features Influencing Fraud Predictions:
+## Top Important Features
 
 | Feature | Importance |
 | ------- | ---------- |
-| V14     | 0.0791     |
-| V12     | 0.0739     |
-| V4      | 0.0675     |
-| V3      | 0.0456     |
-| V10     | 0.0446     |
-| V11     | 0.0366     |
-| V17     | 0.0313     |
-| V16     | 0.0189     |
-| V1      | 0.0114     |
-| V7      | 0.0101     |
+| V14     | 0.7027     |
+| V4      | 0.0562     |
+| V12     | 0.0302     |
+| V17     | 0.0206     |
+| V3      | 0.0155     |
+| V1      | 0.0133     |
+| V8      | 0.0133     |
+| V13     | 0.0121     |
+| V10     | 0.0094     |
+| V7      | 0.0092     |
 
 ---
 
 ## Streamlit Application
 
-Run the application:
+Features:
 
-```bash
-streamlit run app/app.py
-```
-
-The application allows users to upload transaction datasets and identify potentially fraudulent transactions.
+* Upload transaction CSV
+* Fraud prediction
+* Fraud probability scoring
+* Download prediction results
+* Feature importance visualization
+* Performance metrics dashboard
 
 ---
 
-## Future Improvements
+## Project Structure
 
-* XGBoost and LightGBM comparison
-* Real-time fraud detection API
-* Advanced Streamlit dashboard
-* Transaction risk scoring
-* Explainable AI visualizations
+Fraud-Detection-System/
+
+├── app/
+
+├── data/
+
+├── models/
+
+├── notebooks/
+
+├── src/
+
+├── README.md
+
+└── requirements.txt
+
+---
+
+## Run Locally
+
+pip install -r requirements.txt
+
+streamlit run app/app.py
 
 ---
 
