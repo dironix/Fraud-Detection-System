@@ -1,18 +1,65 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+.env/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# =========================
+# Dataset Files
+# =========================
 data/raw/
 data/processed/
 
-venv/
-.env
+# Optional large data files
+*.csv
+!sample.csv
 
-__pycache__/
-*.pyc
+# =========================
+# Model Files
+# =========================
+# Uncomment if model becomes large
+# models/*.pkl
 
-.ipynb_checkpoints/
-
-models/*.pkl
-
-.DS_Store
-
-.idea/
+# =========================
+# IDE Files
+# =========================
 .vscode/
+.idea/
 
+# =========================
+# Operating System Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Streamlit
+# =========================
+.streamlit/secrets.toml
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Build Artifacts
+# =========================
+build/
+dist/
+*.egg-info/
+
+# =========================
+# Cache
+# =========================
+.cache/
+.pytest_cache/

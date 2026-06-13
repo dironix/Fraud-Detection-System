@@ -122,10 +122,10 @@ Parameters:
 
 | Metric    | Value  |
 | --------- | ------ |
-| Precision | 0.61   |
-| Recall    | 0.87   |
-| F1-Score  | 0.71   |
-| ROC-AUC   | 0.9769 |
+| Precision | 0.79   |
+| Recall    | 0.85   |
+| F1-Score  | 0.82   |
+| ROC-AUC   | 0.9831 |
 
 Confusion Matrix:
 

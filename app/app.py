@@ -8,12 +8,26 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 model_path = os.path.join(
     BASE_DIR,
     "models",
-    "random_forest_model.pkl"
+    "xgboost_model.pkl"
 )
 
 model = joblib.load(model_path)
 
-st.title("Credit Card Fraud Detection")
+st.set_page_config(
+    page_title="Fraud Detection System",
+    page_icon="💳",
+    layout="wide"
+)
+
+st.title("💳 Credit Card Fraud Detection System")
+
+st.markdown(
+    """
+    Upload transaction data and detect
+    fraudulent transactions using
+    an XGBoost Machine Learning model.
+    """
+)
 
 uploaded_file = st.file_uploader(
     "Upload CSV",
@@ -27,10 +41,17 @@ if uploaded_file:
 
     data["Prediction"] = predictions
 
-    st.write(data.head())
+    st.subheader(
+    "Prediction Results"
+)
+
+    st.dataframe(
+    data.head(20)
+)
 
     frauds = (predictions == 1).sum()
 
-    st.success(
-        f"Fraudulent Transactions Detected: {frauds}"
-    )
+    st.metric(
+    "Fraudulent Transactions",
+    frauds
+)
